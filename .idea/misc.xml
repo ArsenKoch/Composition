@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/circle_background.xml" value="0.3205" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/option_1.xml" value="0.27" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/option_3.xml" value="0.27" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/option_4.xml" value="0.27" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/option_5.xml" value="0.27" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/option_6.xml" value="0.27" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/drawable/rectangle_background.xml" value="0.3205" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/fragment_choose_level.xml" value="0.2569444444444444" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/fragment_game.xml" value="0.3671875" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/fragment_game_finished.xml" value="0.3671875" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/fragment_game_level.xml" value="0.3671875" />
+        <entry key="..\:/Users/fapah/AndroidStudioProjects/Composition/app/src/main/res/layout/fragment_welcome.xml" value="0.4466666666666667" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
