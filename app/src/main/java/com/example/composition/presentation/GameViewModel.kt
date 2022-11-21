@@ -68,6 +68,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         getGameSettings(level)
         startTimer()
         generateQuestion()
+        updateProgress()
     }
 
     private fun generateQuestion() {
@@ -93,8 +94,10 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun calculatePercentAnswers(): Int {
-        return ((countOfAnswers / countOfAnswers.toDouble()) * 100).toInt()
-
+        if (countOfQuestion == 0) {
+            return 0
+        }
+        return ((countOfAnswers / countOfQuestion.toDouble()) * 100).toInt()
     }
 
     private fun checkAnswer(number: Int) {
@@ -118,13 +121,13 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         ) {
             override fun onTick(p0: Long) {
                 _formattedTime.value = formatTime(p0)
-
             }
 
             override fun onFinish() {
                 finishTimer()
             }
         }
+        timer?.start()
     }
 
     private fun finishTimer() {
