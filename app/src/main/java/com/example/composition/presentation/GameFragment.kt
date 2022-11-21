@@ -1,6 +1,5 @@
 package com.example.composition.presentation
 
-import android.media.MediaFormat.KEY_LEVEL
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import com.example.composition.domain.entity.GameResult
 import com.example.composition.domain.entity.GameSettings
 import com.example.composition.domain.entity.Level
 
+@Suppress("DEPRECATION")
 class GameFragment : Fragment() {
 
     private lateinit var level: Level
