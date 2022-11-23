@@ -15,17 +15,21 @@ import com.example.composition.R
 import com.example.composition.databinding.FragmentGameBinding
 import com.example.composition.domain.entity.GameResult
 import com.example.composition.domain.entity.Level
+import com.example.composition.presentation.model.GameViewModel
 
 @Suppress("DEPRECATION")
 class GameFragment : Fragment() {
 
     private lateinit var level: Level
+    private val gameViewModel by lazy {
+        GameViewModelFactory(
+            requireActivity().application,
+            level
+        )
+    }
 
     private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )[GameViewModel::class.java]
+        ViewModelProvider(this, gameViewModel)[GameViewModel::class.java]
     }
 
     private val tvOptions by lazy {
@@ -62,7 +66,6 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setOnClickListenersToOptions()
-        viewModel.startGame(level)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
