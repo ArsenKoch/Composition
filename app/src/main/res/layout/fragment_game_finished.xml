@@ -24,6 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:resultImageId="@{gameResult.winner}"
             app:srcCompat="@drawable/smile" />
 
         <TextView
@@ -32,39 +33,39 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{gameResult.gameSettings.minCountOfRightAnswersString}"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_emoji_result" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_emoji_result"
+            app:requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}" />
 
         <TextView
             android:id="@+id/tv_score"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{gameResult.countOfRightAnswersString}"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_required_number_answers" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_required_number_answers"
+            app:score="@{gameResult.countOfRightAnswers}" />
 
         <TextView
             android:id="@+id/tv_required_percentage_answers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{gameResult.gameSettings.minPercentOfRightAnswersString}"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_score" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_score"
+            app:requiredPercentageAnswers="@{gameResult.gameSettings.minPercentOfRightAnswers}" />
 
         <TextView
             android:id="@+id/tv_percentage_answers"
@@ -77,7 +78,8 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_required_percentage_answers" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_required_percentage_answers"
+            app:scorePercentage="@{gameResult}" />
 
         <Button
             android:id="@+id/button_again"
