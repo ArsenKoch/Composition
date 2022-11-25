@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.composition.presentation.model.GameViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/timer"
+            android:text="@{viewModel.formattedTime}"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,6 +30,7 @@
 
         <TextView
             android:id="@+id/tv_sum"
+            numberAsText="@{viewModel.question.sum}"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="16dp"
@@ -39,6 +48,7 @@
 
         <TextView
             android:id="@+id/tv_left_number"
+            numberAsText="@{viewModel.question.visibleNumber}"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginStart="36dp"
@@ -81,6 +91,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_1"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(0).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -88,6 +99,7 @@
             app:layout_constraintEnd_toStartOf="@id/tv_option_5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="1" />
 
         <TextView
@@ -96,12 +108,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_2"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(1).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_option_4"
             app:layout_constraintEnd_toStartOf="@id/tv_option_6"
             app:layout_constraintStart_toEndOf="@id/tv_option_4"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="2" />
 
         <TextView
@@ -110,12 +124,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_3"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(2).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tv_option_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_option_5"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="3" />
 
         <TextView
@@ -124,6 +140,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_4"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(3).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -131,6 +148,7 @@
             app:layout_constraintEnd_toStartOf="@id/tv_option_5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="4" />
 
         <TextView
@@ -139,12 +157,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_5"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(4).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_option_6"
             app:layout_constraintStart_toEndOf="@id/tv_option_4"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="5" />
 
         <TextView
@@ -153,21 +173,24 @@
             android:layout_height="wrap_content"
             android:background="@drawable/option_6"
             android:gravity="center"
+            android:text="@{viewModel.question.options.get(5).toString()}"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_option_5"
+            app:onOptionClickListener="@{(option) -> viewModel.chooseAnswer(option)}"
             tools:text="6" />
 
         <TextView
             android:id="@+id/tv_answers_progress"
+            enoughAnswers="@{viewModel.enoughAnswers}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/right_answers"
+            android:text="@{viewModel.progressAnswers}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
@@ -179,9 +202,12 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
+            enoughPercentAnswers="@{viewModel.enoughPercentAnswers}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:max="100"
+            android:progress="@{viewModel.percentAnswers}"
+            android:secondaryProgress="@{viewModel.minPercentAnswers}"
             app:layout_constraintBottom_toTopOf="@id/tv_option_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
